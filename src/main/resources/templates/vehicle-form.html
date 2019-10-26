@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle form</title>
+</head>
+<body>
+<h1>Vehicle form</h1>
+<form th:action="@{/vehicle/add}" method="post" th:object="${edited_vehicle}">
+    <input type="hidden" th:field="*{id}">
+
+    Brand: <input type="text" th:field="*{brand}"> <br/>
+    Model: <input type="text" th:field="*{model}"> <br/>
+    DailyFee: <input type="number" min="1" th:field="*{dailyFee}"> <br/>
+    Bodytype: <input ttype="text" th:field="*{bodytype}"> <br/>
+    ProductionYear: <input type="number" min="1" th:field="*{productionYear}"> <br/>
+    Color: <input type="text" th:field="*{color}"> <br/>
+    Registration: <input type="text" th:field="*{registration}"> <br/>
+
+    <select th:name="bookingId">
+        <!--/*@thymesVar id="getName" type=""*/-->
+        <option th:each="booking : ${allBookings}"
+                th:text="${booking.vehicle.getId()}"
+                th:value="${booking.getId()}"
+                th:selected="${edited_vehicle.getBooking() != null &&
+                                booking.getId() == edited_vehicle.getBooking().getId()}">
+        </option>
+    </select>
+    <input type="submit">
+</form>
+</body>
+</html>

@@ -24,8 +24,11 @@ public class ChangesBooking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Long bookingId;
-
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime changesDate;
+
+	private String comment;
+
+	@ManyToOne
+	private Booking booking;
 }

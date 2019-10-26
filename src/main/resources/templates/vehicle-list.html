@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Vehicle list</title>
 </head>
 <body>
-<div th:replace="templates :: navigator"></div>
+<div th:replace="fragments :: navigator"></div>
 <h1>Vehicle list</h1>
 <table>
     <tr>
@@ -14,8 +14,11 @@
         <th>Brand</th>
         <th>Model</th>
         <th>DailyFee</th>
-        <th>LocationId</th>
+        <th>Bodytype</th>
+        <th>Production Year</th>
+        <th>Color</th>
         <th>VehicleStatus</th>
+
         <th></th>
     </tr>
     <tr th:each="vehicle : ${our_vehicle_list}">
@@ -24,7 +27,9 @@
         <td th:text="${vehicle.getBrand()}"></td>
         <td th:text="${vehicle.getModel()}"></td>
         <td th:text="${vehicle.getDailyFee()}"></td>
-        <td th:text="${vehicle.getLocationId()}"></td>
+        <td th:text="${vehicle.getBodytype()}"></td>
+        <td th:text="${vehicle.getProductionYear()}"></td>
+        <td th:text="${vehicle.getColor()}"></td>
         <td th:text="${vehicle.getVehicleStatus()}"></td>
         <td>
             <a th:href="@{'/vehicle/edit/'+ ${vehicle.getId()}}">Edit</a>

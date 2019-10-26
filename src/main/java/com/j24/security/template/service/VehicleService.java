@@ -26,7 +26,7 @@ public class VehicleService {
         if (bookingRepository.existsById(bookingId)) {
             Booking booking = bookingRepository.getOne(bookingId);
 
-            vehicle.setBooking(booking);
+            vehicle.setBooking((List<Booking>) booking);
 
             vehicleRepository.save(vehicle);
         } else {
@@ -34,6 +34,9 @@ public class VehicleService {
         }
     }
 
+    //Wyznacznie ceny za wypożyczenie (
+    //Duration duration = Duration.between(receiptDate, returnDate);
+    //totalCost = duration * dailyFee
     public Optional<Vehicle> getById(Long id) {
         return vehicleRepository.findById(id);
     }

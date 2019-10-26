@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Booking list</title>
-    <th:block th:replace="fragments :: styles" th:remove="tag"></th:block>
+    <th:block th:replace="fragments :: styleLinks" th:remove="tag"></th:block>
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"></th:block>
@@ -13,20 +13,16 @@
             <h1>Bookings</h1>
         </div>
         <div class="row col-md-12 list-header-row">
-            <div class="col-md-2">id</div>
-            <div class="col-md-5">userId</div>
-            <div class="col-md-5">vehicleId</div>
-            <div class="col-md-5">locationId</div>
-            <div class="col-md-5">receiptDate</div>
-            <div class="col-md-5">returnDate</div>
-            <div class="col-md-5">totalCost</div>
-            <div class="col-md-5">returnDate</div>
+            <div class="col-md-2">car</div>
+            <div class="col-md-4">receiptDate</div>
+            <div class="col-md-4">returnDate</div>
+            <div class="col-md-2">totalCost</div>
 
             <div class="col-md-5"></div> <!--Guziki-->
         </div>
         <div class="row col-md-12 list-row" th:each="book : ${bookings}">
             <div class="col-md-2" th:text="${book.getId()}"></div>
-            <div class="col-md-5" th:text="${book.getName()}"></div>
+            <div class="col-md-5" th:text="${book.getReceiptDate()}"></div>
             <div class="row col-md-5">
                 <div class="col-md-4">
                     <a th:href="@{/booking/remove(bookId=${book.getId()})}" class="col-md-12">
@@ -48,6 +44,6 @@
         </div>
     </div>
 </div>
-<th:block th:replace="fragments :: jsscripts" th:remove="tag"></th:block>
+<th:block th:replace="fragments :: jsScripts" th:remove="tag"></th:block>
 </body>
 </html>

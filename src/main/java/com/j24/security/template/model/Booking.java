@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -27,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 @Entity
 @AllArgsConstructor
@@ -37,20 +40,22 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-
-    private Long vehicleId;
-
-    private Long locationId;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDate receiptDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Timestamp receiptDate;
+    private LocalDate returnDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Timestamp returnDate;
+
 
     private BigDecimal totalCost;
 
+    @ManyToOne()
+    private Vehicle vehicle;
+
     @OneToMany(mappedBy = "booking")
-    private Set<Vehicle> vehicleSet;
+    private List<ChangesBooking> changesBookings;
+
+    @ManyToOne
+    private Account account;
 }

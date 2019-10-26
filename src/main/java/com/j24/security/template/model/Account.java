@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.awt.print.Book;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,4 +34,8 @@ public class Account {
                 .map(AccountRole::getName)
                 .anyMatch(s -> s.equals("ADMIN"));
     }
+
+    @OneToMany(mappedBy = "account")
+    private List<Booking> bookings;
+
 }

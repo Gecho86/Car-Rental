@@ -31,14 +31,20 @@ public class Vehicle {
 
     private BigDecimal dailyFee;
 
-    private Long locationId;
-
     private String vehicleStatus;
 
-    @OneToOne(mappedBy = "vehicles")
-    private VehicleParameters vehicleParameters;
+    private String bodytype;
 
-    @ManyToOne()
-    private Booking booking;
+    private Integer productionYear;
+
+    private String color;
+
+
+
+//    @OneToOne(mappedBy = "vehicles")
+//    private VehicleParameters vehicleParameters;
+
+    @OneToMany(mappedBy = "vehicle")
+    private List<Booking> booking;
 }
 
