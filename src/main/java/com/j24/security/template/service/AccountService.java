@@ -80,6 +80,7 @@ public class AccountService {
     public Optional<Account> getById(Long id) {
         return accountRepository.findById(id);
     }
+    public Optional<Account> getByUsername(String username) { return accountRepository.findByUsername(username); }
 
     public void updateRoles(Long accountId, HttpServletRequest request) {
         // klucz w mapie to nazwa parametru

@@ -22,17 +22,14 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
-    public void save(Vehicle vehicle, Long bookingId) {
-        if (bookingRepository.existsById(bookingId)) {
-            Booking booking = bookingRepository.getOne(bookingId);
-
-            vehicle.setBooking((List<Booking>) booking);
-
-            vehicleRepository.save(vehicle);
-        } else {
-            throw new EntityNotFoundException("Booking does not exist");
-        }
+    public void save(Vehicle vehicle) {
+        vehicleRepository.save(vehicle);
     }
+
+    public void deleteById (Long id) {
+
+        vehicleRepository.deleteById(id); }
+
 
     //Wyznacznie ceny za wypożyczenie (
     //Duration duration = Duration.between(receiptDate, returnDate);

@@ -22,7 +22,7 @@
         </div>
         <div class="row col-md-12 list-row" th:each="book : ${bookings}">
             <div class="col-md-2" th:text="${book.getId()}"></div>
-            <div class="col-md-5" th:text="${book.getReceiptDate()}"></div>
+            <div class="col-md-5" th:text="${book.getReceiptDate()}"></div>}
             <div class="row col-md-5">
                 <div class="col-md-4">
                     <a th:href="@{/booking/remove(bookId=${book.getId()})}" class="col-md-12">

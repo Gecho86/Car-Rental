@@ -7,6 +7,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -38,4 +39,10 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private List<Booking> bookings;
 
+    @OneToMany(mappedBy = "account")
+    private List<Vehicle> vehicles;
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
 }

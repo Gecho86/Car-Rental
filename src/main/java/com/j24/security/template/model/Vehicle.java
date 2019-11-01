@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Vehicle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String registration;
@@ -46,5 +46,10 @@ public class Vehicle {
 
     @OneToMany(mappedBy = "vehicle")
     private List<Booking> booking;
+
+    @ManyToOne()
+    private Account account;
+
+    public BigDecimal getSummarizedPrice() { return dailyFee.multiply(new BigDecimal(2)); }
 }
 

@@ -7,6 +7,7 @@
 <body>
 <div th:replace="fragments :: navigator"></div>
 <h1>Vehicle list</h1>
+<a th:href="@{'/vehicle/add'}">Add</a>
 <table>
     <tr>
         <th>Id</th>
@@ -18,7 +19,7 @@
         <th>Production Year</th>
         <th>Color</th>
         <th>VehicleStatus</th>
-
+        <th>Summarized Price</th>
         <th></th>
     </tr>
     <tr th:each="vehicle : ${our_vehicle_list}">
@@ -31,6 +32,7 @@
         <td th:text="${vehicle.getProductionYear()}"></td>
         <td th:text="${vehicle.getColor()}"></td>
         <td th:text="${vehicle.getVehicleStatus()}"></td>
+        <td th:text="${vehicle.getSummarizedPrice()}"></td>
         <td>
             <a th:href="@{'/vehicle/edit/'+ ${vehicle.getId()}}">Edit</a>
             <a th:href="@{'/vehicle/delete/'+ ${vehicle.getId()}}">Delete</a>
